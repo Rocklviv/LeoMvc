@@ -21,35 +21,35 @@
      * @param array $namespaces
      */
     function __construct($root = null, $namespaces = array()) {
-			$this->autoloadRoot = $root ?: '..' . DIRECTORY_SEPARATOR . '..';
-			$this->namespaces = $this->_trimPaths($namespaces);
+      $this->autoloadRoot = $root ?: '..' . DIRECTORY_SEPARATOR . '..';
+      $this->namespaces = $this->_trimPaths($namespaces);
 
-			set_include_path(stream_resolve_include_path($this->autoloadRoot)
+      set_include_path(stream_resolve_include_path($this->autoloadRoot)
         . PATH_SEPARATOR . get_include_path());
-		}
+    }
 
-		/**
-		 * Prepares namespaces to start application core.
-		 * @method prepareNamespace
-		 * @param Array $namespaces Array list of namespaces.
-		 * @return Autoloader $this
-		 */
-		public function prepareNamespace($namespaces) {
-			$trimedNamespaced = $this->_trimPaths($namespaces);
+    /**
+     * Prepares namespaces to start application core.
+     * @method prepareNamespace
+     * @param Array $namespaces Array list of namespaces.
+     * @return Autoloader $this
+     */
+    public function prepareNamespace($namespaces) {
+      $trimedNamespaced = $this->_trimPaths($namespaces);
 
-			foreach ($trimedNamespaced as $namespace) {
-				$this->namespaces[] = $namespace;
-			}
-			return $this;
-		}
-		
-		/**
+      foreach ($trimedNamespaced as $namespace) {
+        $this->namespaces[] = $namespace;
+      }
+      return $this;
+    }
+
+    /**
      * Gets namespaces.
      * @return array
      */
-		public function getNamespaces() {
-			return $this->namespaces;
-		}
+    public function getNamespaces() {
+      return $this->namespaces;
+    }
 
     /**
      * Registering classes in system.
@@ -64,19 +64,19 @@
       spl_autoload_register('spl_autoload', false, true);
 
       return spl_autoload_register(array($this, 'findFile'), false, false);
-		}		
+    }
 
-		/**
-		 * @method _trimPaths
-		 */
-		private function _trimPaths($namespaces = array()) {
-			$trimedNamespaced = array();
-			if ($namespaces) {
-				$trimedNamespaced = array_map(function($includePath) {
-					$trimmed = rtrim(reset($includePath), DIRECTORY_SEPARATOR);
-					return array(key($includePath) => $trimmed);
-				}, $namespaces);
-			}
-			return $trimedNamespaced;
-		}
-	}
+    /**
+     * @method _trimPaths
+     */
+    private function _trimPaths($namespaces = array()) {
+      $trimedNamespaced = array();
+      if ($namespaces) {
+        $trimedNamespaced = array_map(function($includePath) {
+          $trimmed = rtrim(reset($includePath), DIRECTORY_SEPARATOR);
+          return array(key($includePath) => $trimmed);
+        }, $namespaces);
+      }
+      return $trimedNamespaced;
+    }
+  }

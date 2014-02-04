@@ -19,9 +19,9 @@ class Router {
    * @param array $routes List of routes.
    */
   function start($routes = array()) {
-  	if ($routes) {
-  		$this->listRoutes = $routes;
-  	}
+    if ($routes) {
+      $this->listRoutes = $routes;
+    }
     self::_processRequest();
   }
 
@@ -73,11 +73,11 @@ class Router {
     $this->additionalParams = $additionalParams;
     self::_checkParams();
 
-  	$uri = $_SERVER['REQUEST_URI'] ?: '';
-  	$rUri = explode('/', $uri);
+    $uri = $_SERVER['REQUEST_URI'] ?: '';
+    $rUri = explode('/', $uri);
 
-  	$this->uri = self::_removeEmptyUriPart($rUri);
-  	$r = self::_checkRoutes();
+    $this->uri = self::_removeEmptyUriPart($rUri);
+    $r = self::_checkRoutes();
 
     try {
       if ($r) {
@@ -98,15 +98,15 @@ class Router {
    * @return array $modifiedUri
    */
   private function _removeEmptyUriPart($uri) {
-  	$modifiedUri = array();
+    $modifiedUri = array();
     if (sizeof($uri) >= 3) {
       $this->param = $uri[3];
       unset($uri[3]);
     }
-  	foreach ($uri as $key => $value) {
-  		if ($value !== '') $modifiedUri[] = $value;
-  	}
-  	return $modifiedUri;
+    foreach ($uri as $key => $value) {
+      if ($value !== '') $modifiedUri[] = $value;
+    }
+    return $modifiedUri;
   }
 
   /**
