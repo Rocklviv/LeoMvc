@@ -41,7 +41,6 @@
           $value = explode('system/', $value);
           require_once($value[1]);
         }
-        self::$namespaces = $namespaces ?: array();
         self::$config = $config ?: array();
         self::$routes = $routes ?: array();
       } else {

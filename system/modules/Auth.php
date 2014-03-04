@@ -1,14 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Home
- * Date: 31.01.14
- * Time: 0:26
- */
 
 namespace system\modules;
 
 
 class Auth {
+
+  /**
+   * Checks is email valid.
+   * @param $email String Email.
+   * @return bool
+   */
+  public function checkEmail($email) {
+    if ($email === FILTER_VALIDATE_EMAIL) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
 }
