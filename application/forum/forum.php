@@ -11,9 +11,9 @@ class forum extends Controller {
 
   private $db = null;
 
-	function __construct() {
+  function __construct() {
     $this->db = new forumModel();
-	}
+  }
 
   /**
    * Index page.

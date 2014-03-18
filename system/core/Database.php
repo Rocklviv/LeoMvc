@@ -8,21 +8,21 @@ use \system\Application;
 class Database extends Application {
 
   /* Configuration */
-	private $cfg;
+  private $cfg;
   /* Database handler variable */
   public $dbh;
 
   function __construct() {
     $this->cfg = $this->getConfigs();
     $this->startDb();
-	}
+  }
 
   /**
    * Starting DB.
    */
   function startDb() {
-		self::prepConfiguration();
-	}
+    self::prepConfiguration();
+  }
 
   /**
    * Prepares database configuration.
@@ -45,7 +45,7 @@ class Database extends Application {
    *
    */
   function setDbDriver() {
-		$dbDriver = $this->cfg['database-type'];
+    $dbDriver = $this->cfg['database-type'];
     $dbPath = $this->cfg['sqlite-db-path'];
     try {
       if ($dbDriver != 'sqlite') {
@@ -62,5 +62,5 @@ class Database extends Application {
       $err = new ErrorHandler();
       $err->get404($e);
     }
-	}
+  }
 }
