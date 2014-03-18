@@ -12,7 +12,7 @@ class Session {
    * Initialize session.
    */
   function init() {
-    session_start();
+    @session_start();
   }
 
   /**

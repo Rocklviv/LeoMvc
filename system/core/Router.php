@@ -35,7 +35,8 @@ class Router {
 
     if ($controller_path) {
       self::_checkControllerExists($controller_path);
-      $ctr = new $controller;
+      $class = '\\application\\' . $controller . '\\' . $controller;
+      $ctr = new $class;
       if (method_exists($ctr, $method)) {
         if ($this->param){
           $ctr->$method($this->param);
@@ -100,8 +101,8 @@ class Router {
   private function _removeEmptyUriPart($uri) {
     $modifiedUri = array();
     if (sizeof($uri) >= 3) {
-      $this->param = $uri[3];
-      unset($uri[3]);
+      $this->param = $uri[sizeof($uri) - 1];
+      unset($uri[sizeof($uri) - 1]);
     }
     foreach ($uri as $key => $value) {
       if ($value !== '') $modifiedUri[] = $value;

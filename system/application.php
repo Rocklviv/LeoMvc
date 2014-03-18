@@ -11,24 +11,44 @@
     private static $routes = array();
     private static $namespaces = array();
     private static $router;
-
-    function __construct() {
-      require_once ('core/Autoloader.php');
-      self::_getConfigs();
-      $loader = new \system\core\Autoloader();
-      $loader
-              ->prepareNamespace(self::$namespaces)
-              ->register();
-
-      self::$router = new Router();
-    }
+    private static $startTime = '';
 
    /**
     * Start method.
     * @method start
     */
     static function start() {
+      self::startTimer();
+      require_once ('core/Autoloader.php');
+      self::_getConfigs();
+      $loader = new \system\core\Autoloader();
+      $loader
+        ->prepareNamespace(self::$namespaces)
+        ->register();
+
+      self::$router = new Router();
       self::$router->start(self::$routes);
+      self::endTimer();
+    }
+
+    static function startTimer() {
+      $time = microtime();
+      $time = explode(' ', $time);
+      $time = $time[1] + $time[0];
+      self::$startTime = $time;
+    }
+
+    static function endTimer() {
+      $time = microtime();
+      $time = explode(' ', $time);
+      $time = $time[1] + $time[0];
+      $finish = $time;
+      $total_time = round(($finish - self::$startTime), 4);
+      echo 'Page generated in '.$total_time.' seconds.';
+    }
+
+    static function getConfigs() {
+      return self::$config;
     }
 
    /**

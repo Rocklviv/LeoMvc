@@ -18,4 +18,9 @@ class ErrorHandler extends Controller {
     $this->render404($title, $r->getMessage());
   }
 
+  function get500($error) {
+  	$title = '500 | Internal Server Error';
+  	$this->render404($title, $error->getMessage());
+  }
+
 } 
