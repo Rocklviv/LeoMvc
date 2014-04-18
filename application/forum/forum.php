@@ -15,4 +15,4 @@ class forum extends Controller {
     echo $this->render('forum/index.twig', $arr);
   }
 
-} 
+}

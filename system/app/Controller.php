@@ -21,7 +21,7 @@ class Controller extends View {
    * @param String $title Page title name.
    * @param String $message Message to show.
    */
-  function render404($title, $message) {
+  function renderError($title, $message) {
     echo $message;
   }
 

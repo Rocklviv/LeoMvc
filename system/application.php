@@ -12,29 +12,49 @@
     private static $routes = array();
     private static $namespaces = array();
     private static $router;
+    private static $startTime = '';
 
-    function __construct() {
+    /**
+     * Start method.
+     * @method start
+     */
+    static function start() {
+      self::startTimer();
       require_once ('core/Autoloader.php');
       self::_getConfigs();
       $loader = new Autoloader();
       $loader
-              ->prepareNamespace(self::$namespaces)
-              ->register();
+        ->prepareNamespace(self::$namespaces)
+        ->register();
 
       self::$router = new Router();
-    }
-
-   /**
-    * Start method.
-    * @method start
-    */
-    static function start() {
       self::$router->start(self::$routes);
+      self::endTimer();
     }
 
-   /**
-    * @method _getConfigs
-    */
+    static function startTimer() {
+      $time = microtime();
+      $time = explode(' ', $time);
+      $time = $time[1] + $time[0];
+      self::$startTime = $time;
+    }
+
+    static function endTimer() {
+      $time = microtime();
+      $time = explode(' ', $time);
+      $time = $time[1] + $time[0];
+      $finish = $time;
+      $total_time = round(($finish - self::$startTime), 4);
+      echo 'Page generated in '.$total_time.' seconds.';
+    }
+
+    static function getConfigs() {
+      return self::$config;
+    }
+
+    /**
+     * @method _getConfigs
+     */
     static private function  _getConfigs() {
       if (defined('CONFIG_DIR')) {
         $files = glob(CONFIG_DIR . '*.php');
@@ -42,7 +62,6 @@
           $value = explode('system/', $value);
           require_once($value[1]);
         }
-        self::$namespaces = $namespaces ?: array();
         self::$config = $config ?: array();
         self::$routes = $routes ?: array();
       } else {
@@ -50,4 +69,4 @@
         self::_getConfigs();
       }
     }
-}
+  }

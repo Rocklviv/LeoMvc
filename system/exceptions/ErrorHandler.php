@@ -15,7 +15,16 @@ class ErrorHandler extends Controller {
    */
   function get404($r) {
     $title = '404 | Page Not Found';
-    $this->render404($title, $r->getMessage());
+    $this->renderError($title, $r->getMessage());
+  }
+
+  /**
+   * Prepare error 500 message.
+   * @param $message
+   */
+  function get500($message) {
+    $title = "Error 500 | Internal Server Error";
+    $this->renderError($title, $message->getMessage());
   }
 
 } 
