@@ -1,0 +1,12 @@
+{% extends 'base.layout.twig' %}
+
+{% block messages %}
+  <div class="col-md-2"></div>
+  <div class="col-md-8" role="main">
+    <div class="callout callout-danger">
+      <h4>{{ title }}</h4>
+      <p>{{ message|raw }}</p>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+{% endblock %}

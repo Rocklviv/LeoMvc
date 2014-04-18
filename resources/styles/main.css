@@ -1,0 +1,24 @@
+.nav-login {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.callout {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 3px solid #eee;
+}
+
+.callout-danger {
+  background-color: #fdf7f7;
+  border-color: #d9534f;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout-danger h4 {
+  color: #d9534f;
+  font: bold;
+}

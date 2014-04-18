@@ -17,12 +17,17 @@ class Controller extends View {
   }
 
   /**
-   * Renders 404 page.
+   * Renders error page.
    * @param String $title Page title name.
    * @param String $message Message to show.
    */
   function renderError($title, $message) {
-    echo $message;
+    $arr = array(
+      'title' => $title,
+      'message' => $message
+    );
+
+    echo $result = $this->renderTpl('error/errorPage.twig', $arr);
   }
 
   /**
