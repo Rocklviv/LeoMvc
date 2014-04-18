@@ -1,6 +1,7 @@
 <?php
   namespace system;
   use \system\core\Router;
+  use \system\core\Autoloader;
   /**
   * Main application class.
   * @class Application
@@ -15,7 +16,7 @@
     function __construct() {
       require_once ('core/Autoloader.php');
       self::_getConfigs();
-      $loader = new \system\core\Autoloader();
+      $loader = new Autoloader();
       $loader
               ->prepareNamespace(self::$namespaces)
               ->register();
@@ -41,6 +42,7 @@
           $value = explode('system/', $value);
           require_once($value[1]);
         }
+        self::$namespaces = $namespaces ?: array();
         self::$config = $config ?: array();
         self::$routes = $routes ?: array();
       } else {

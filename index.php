@@ -12,6 +12,12 @@ if (defined('LeoDebug')) {
 
 // Directory where stored application controllers.
 define('APP', 'application');
+//
+define('APP_STATE', 'development');
+// Template dir.
+define('TEMPLATE_DIR', 'templates');
+// Cache dir.
+define('CACHE', 'cache');
 
 // Including a bootstrap application class.
 require('system/application.php');

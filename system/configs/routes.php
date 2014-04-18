@@ -1,6 +1,6 @@
 <?php
 
-	$routes = array(
+  $routes = array(
     '/' => array(
       'controller' => 'forum',
       'method' => 'index'

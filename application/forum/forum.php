@@ -12,7 +12,7 @@ class forum extends Controller {
   function index() {
     $arr = array('key' => 'value');
 
-    var_dump($this->render('', $arr));
+    echo $this->render('forum/index.twig', $arr);
   }
 
 } 

@@ -34,7 +34,7 @@ class Controller extends View {
   function render($template = null, $data = null) {
     $result = '';
     if (!empty($template)) {
-      $this->renderTpl($template, $data);
+      $result = $this->renderTpl($template, $data);
     } else {
       $result = self::_apiResponse($data);
     }
