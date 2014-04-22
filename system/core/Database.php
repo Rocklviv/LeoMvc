@@ -49,8 +49,10 @@ class Database extends Application {
     $dbPath = $this->cfg['sqlite-db-path'];
     try {
       if ($dbDriver != 'sqlite') {
-        $this->dbh = new \PDO($dbDriver . ':host=' . $this->cfg['database-host'] . ';'
-          . 'dbname=' . $this->cfg['database-name'],
+        $this->dbh = new \PDO($dbDriver .
+          ':host=' . $this->cfg['database-host'] .
+          ';port=' . $this->cfg['database-port'] .
+          ';dbname=' . $this->cfg['database-name'],
           $this->cfg['database-user'],
           $this->cfg['database-password']);
         $this->dbh->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -60,7 +62,7 @@ class Database extends Application {
       }
     } catch (\PDOException $e) {
       $err = new ErrorHandler();
-      $err->get404($e);
+      $err->get500($e);
     }
   }
 }
