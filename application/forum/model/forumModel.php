@@ -11,12 +11,12 @@ class forumModel extends Database {
   }
 
   function index() {
-    $data = $this->dbh->query('SELECT * FROM users');
-    $data->setFetchMode(\PDO::FETCH_OBJ);
+    #$data = $this->dbh->query('SELECT * FROM users');
+    #$data->setFetchMode(\PDO::FETCH_OBJ);
 
-    while ($row = $data->fetch()) {
-      $row;
-    }
+#    while ($row = $data->fetch()) {
+ #     $row;
+  #  }
   }
 
 }

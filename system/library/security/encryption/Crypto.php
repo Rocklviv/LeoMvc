@@ -19,9 +19,9 @@ class Crypto implements CryptoInterface {
    * @param $key
    * @param string $algorithm
    */
-  public function __construct($key, $algorithm = MCRYPT_BLOWFISH) {
-    $this->key = substr($key, 0, mcrypt_get_key_size($algorithm, MCRYPT_MODE_ECB));
-    $this->algorithm = $algorithm;
+  public function __construct() {
+    $this->key = SECRET_KEY;
+    $this->algorithm = ENCRYPTION_TYPE;
   }
 
   /**
@@ -30,11 +30,8 @@ class Crypto implements CryptoInterface {
    * @return mixed|string
    */
   public function Encrypt($data) {
-    $getSize = mcrypt_get_iv_size($this->algorithm, MCRYPT_MODE_ECB);
-    $sizeIv = mcrypt_create_iv($getSize, MCRYPT_RAND);
-
-    $encrypted = mcrypt_encrypt($this->algorithm, $this->key, $data, MCRYPT_MODE_ECB, $sizeIv);
-    return trim(base64_encode($encrypted));
+    $encrypted = mcrypt_encrypt($this->algorithm, $this->key, $data, MCRYPT_MODE_ECB);
+    return base64_encode($encrypted);
   }
 
   /**
@@ -43,13 +40,9 @@ class Crypto implements CryptoInterface {
    * @return mixed|string
    */
   public function Decrypt($data) {
-    $encrypted = base64_encode($data);
-    $getSize = mcrypt_get_iv_size($this->algorithm, MCRYPT_MODE_ECB);
-    $sizeIv = mcrypt_create_iv($getSize, MCRYPT_RAND);
-
-    $decrypt = mcrypt_decrypt($this->algorithm, $this->key, $encrypted, MCRYPT_MODE_ECB, $sizeIv);
-
-    return trim($decrypt);
+    $data = base64_decode($data);
+    $decrypted = mcrypt_decrypt($this->algorithm, $this->key, $data, MCRYPT_MODE_ECB);
+    return $decrypted;
   }
 
 }
