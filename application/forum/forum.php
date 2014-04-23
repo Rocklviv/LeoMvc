@@ -27,7 +27,7 @@ class forum extends Controller {
 
     $this->db->index();
 
-    $enc = $this->crypto->Encrypt('Ac3ral2416w');
+    $enc = $this->crypto->Encrypt('testpassword');
     $dec = $this->crypto->Decrypt($enc);
 
     echo "Encrypted: " . $enc . '<br/>';
