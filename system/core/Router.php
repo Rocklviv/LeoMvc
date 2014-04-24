@@ -7,19 +7,33 @@ use \system\exceptions\HttpException;
 /**
  * Class Router
  * @package system\core
+ * @author Denis Chekirda
  */
 class Router {
 
-  // Requested url.
+  /**
+   * Stores requested URI.
+   * @var null
+   */
   private $uri = null;
-  // Available list of routes.
+  /**
+   * Stores list of available routes.
+   * @var array
+   */
   private $listRoutes = array();
-  // Additional params that was added to url.
+  /**
+   * Stores additional params.
+   * @var null
+   */
   private $additionalParams = null;
-  // Additional param.
+  /**
+   * Stores additional param.
+   * @var null
+   */
   private $param = null;
 
   /**
+   * Starts routing.
    * @param array $routes List of routes.
    */
   function start($routes = array()) {
@@ -30,7 +44,7 @@ class Router {
   }
 
   /**
-   * Creates new instance.
+   * Creates new instance as requested.
    * @param array $request
    */
   function createInstance($request) {
@@ -39,7 +53,6 @@ class Router {
     $method = $request['method'];
 
     if ($controller_path) {
-      self::_checkControllerExists($controller_path);
       $class = '\\application\\' . $controller . '\\' . $controller;
       $ctr = new $class;
       if (method_exists($ctr, $method)) {
@@ -55,6 +68,7 @@ class Router {
   /**
    * Checks controller on exist.
    * @param $controller_path
+   * @deprecated Will be reimplemented.
    * @return bool
    */
   private function _checkControllerExists($controller_path) {
@@ -71,7 +85,8 @@ class Router {
   }
 
   /**
-   *
+   * Prepares initialize of instance as requested.
+   * @throws HttpException
    */
   private function _processRequest() {
     $additionalParams = explode('?', $_SERVER['REQUEST_URI']);
@@ -100,8 +115,8 @@ class Router {
   /**
    * Removes empty values from URI array.
    * @method _removeEmptyUriPart
-   * @param array $uri
-   * @return array $modifiedUri
+   * @param array $uri Requested URI.
+   * @return array $modifiedUri Returns clean URI.
    */
   private function _removeEmptyUriPart($uri) {
     $modifiedUri = array();

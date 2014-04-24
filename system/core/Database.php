@@ -5,22 +5,37 @@ use \system\exceptions\ErrorHandler;
 use \system\exceptions\LeoException;
 use \system\Application;
 
+/**
+ * Class Database
+ * @package system\core
+ * @author Denis Chekirda
+ */
 class Database extends Application {
 
-  /* Configuration */
-  private $cfg;
-  /* Database handler variable */
-  public $dbh;
+  /**
+   * Stores configuration.
+   * @var array
+   */
+  private $cfg = array();
 
+  /**
+   * Reference to PDO instance.
+   * @var null
+   */
+  public $dbh = null;
+
+  /**
+   * Gets configuration and initialize Database.
+   */
   function __construct() {
     $this->cfg = $this->getConfigs();
-    $this->startDb();
+    $this->initialize();
   }
 
   /**
-   * Starting DB.
+   * Initialize Database.
    */
-  function startDb() {
+  function initialize() {
     self::prepConfiguration();
   }
 
@@ -31,7 +46,7 @@ class Database extends Application {
   private function prepConfiguration() {
     try {
       if (isset($this->cfg['database-type']) && !empty($this->cfg['database-type'])) {
-        self::setDbDriver();
+        self::setConnection();
       } else {
         throw new LeoException('Error #2: Database Driver not set in system/configs/config.php');
       }
@@ -42,9 +57,10 @@ class Database extends Application {
   }
 
   /**
-   *
+   * Sets DB connection via PDO.
+   * @throws \PDOException
    */
-  function setDbDriver() {
+  function setConnection() {
     $dbDriver = $this->cfg['database-type'];
     $dbPath = $this->cfg['sqlite-db-path'];
     try {

@@ -23,7 +23,7 @@ class forum extends Controller {
    * Index page.
    */
   function index() {
-    
+    echo "Index Forum <br/>";
   }
 
 } 

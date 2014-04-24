@@ -5,14 +5,35 @@
   /**
   * Main application class.
   * @class Application
+  * @author Denis Chekirda
   */
   class Application {
 
+    /**
+     * Stores system configuration.
+     * @var array
+     */
     private static $config = array();
+    /**
+     * Stores list of allowed routes.
+     * @var array
+     */
     private static $routes = array();
+    /**
+     * Stores list of namespaces.
+     * @var array
+     */
     private static $namespaces = array();
-    private static $router;
-    private static $startTime = '';
+    /**
+     * Reference to Router instance.
+     * @var null
+     */
+    private static $router = null;
+    /**
+     * Stores start time for page generator.
+     * @var null
+     */
+    private static $startTime = null;
 
     /**
      * Start method.
@@ -32,6 +53,9 @@
       self::endTimer();
     }
 
+    /**
+     * Starts timer for page generator.
+     */
     static function startTimer() {
       $time = microtime();
       $time = explode(' ', $time);
@@ -39,6 +63,9 @@
       self::$startTime = $time;
     }
 
+    /**
+     * Ends timer for page generator.
+     */
     static function endTimer() {
       $time = microtime();
       $time = explode(' ', $time);
@@ -48,12 +75,17 @@
       echo 'Page generated in '.$total_time.' seconds.';
     }
 
+    /**
+     * Gets system configuration.
+     * @return array
+     */
     static function getConfigs() {
       return self::$config;
     }
 
     /**
-     * @method _getConfigs
+     * Gets system configuration.
+     * @private
      */
     static private function  _getConfigs() {
       if (defined('CONFIG_DIR')) {

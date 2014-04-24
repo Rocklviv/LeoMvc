@@ -6,27 +6,28 @@ use \system\app\Controller;
 /**
  * Class ErrorHandler
  * @package system\exceptions
+ * @author Denis Chekirda
  */
 class ErrorHandler extends Controller {
 
   /**
-   * Prepare 404 page.
-   * @param $r
+   * Prepares 404 error page.
+   * @param $error
    */
-  function get404($r) {
+  function get404($error) {
     header("HTTP/1.0 404 Not Found");
     $title = 'Error 404 | Page Not Found';
-    $this->renderError($title, $r->getMessage());
+    $this->renderError($title, $error->getMessage());
   }
 
   /**
-   * Prepare error 500 message.
-   * @param $message
+   * Prepares 500 error page.
+   * @param $error
    */
-  function get500($message) {
+  function get500($error) {
     header("HTTP/1.0 500 Internal Server Error");
     $title = "Error 500 | Internal Server Error";
-    $this->renderError($title, $message->getMessage());
+    $this->renderError($title, $error->getMessage());
   }
 
 }

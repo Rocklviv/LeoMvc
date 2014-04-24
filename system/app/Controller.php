@@ -1,16 +1,23 @@
 <?php
 namespace system\app;
-use \system\app\View;
-use \system\library\security\Session;
+use \system\library\security\Session\Session;
 
 /**
  * Class Controller
  * @package system\app
+ * @author Denis Chekirda
  */
 class Controller extends View {
 
-  private $session = '';
+  /**
+   * Reference to Session instance.
+   * @var null
+   */
+  private $session = null;
 
+  /**
+   * Inherits View class.
+   */
   function __construct() {
     $this->session = new Session();
     $this->session->init();
@@ -37,7 +44,7 @@ class Controller extends View {
    * @return string
    */
   function render($template = null, $data = null) {
-    $result = '';
+    $result = null;
     if (!empty($template)) {
       $result = $this->renderTpl($template, $data);
     } else {
@@ -65,7 +72,7 @@ class Controller extends View {
   /**
    * Handle session calls. E.g.: If you want to set a session, call this function like:
    * <code>
-   *   $this->handleSession('set', 'user_id', '1');
+   * $this->handleSession('set', 'user_id', '1');
    * </code>
    *
    * @param string $action Action name that equal method name of Session Class.

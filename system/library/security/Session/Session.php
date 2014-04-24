@@ -1,12 +1,14 @@
 <?php
-
-namespace system\library\security;
+namespace system\library\security\Session;
 
 /**
  * Class Session
- * @package system\library
+ *
+ * @package system\library\security\Session
+ * @implements SessionInterface
+ * @author Denis Chekirda
  */
-class Session {
+class Session implements SessionInterface {
 
   /**
    * Initialize session.

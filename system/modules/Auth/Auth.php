@@ -5,16 +5,33 @@ use \system\Application;
 use \system\modules\Auth\core\BasicAuth\BasicAuth;
 use \system\modules\Auth\core\OAuthv2\OAuth;
 
+/**
+ * Class Auth
+ * @package system\modules\Auth
+ * @author Denis Chekirda
+ */
 class Auth {
 
-  // System Configuration.
+  /**
+   * Stores configuration.
+   * @var array
+   */
   private static $cfg = array();
-  // Instance that needed to be used.
+  /**
+   * Reference to required instance.
+   * @var null
+   */
   private static $instance = null;
-  // Required authtype from configuration.
+  /**
+   * Stores authentication type.
+   * @var null|string
+   */
   private static $authType = null;
 
-  
+
+  /**
+   *
+   */
   public static function __construct() {
     self::$cfg = Application::getConfigs();
     self::$authType = self::$cfg["auth-type"] ?: 'basic';
