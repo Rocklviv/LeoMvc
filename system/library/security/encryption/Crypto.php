@@ -42,7 +42,7 @@ class Crypto implements CryptoInterface {
   public function Decrypt($data) {
     $data = base64_decode($data);
     $decrypted = mcrypt_decrypt($this->algorithm, $this->key, $data, MCRYPT_MODE_ECB);
-    return $decrypted;
+    return trim($decrypted);
   }
 
 }

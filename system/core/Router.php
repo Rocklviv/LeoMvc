@@ -10,10 +10,14 @@ use \system\exceptions\HttpException;
  */
 class Router {
 
-  private $uri;
+  // Requested url.
+  private $uri = null;
+  // Available list of routes.
   private $listRoutes = array();
-  private $additionalParams = '';
-  private $param;
+  // Additional params that was added to url.
+  private $additionalParams = null;
+  // Additional param.
+  private $param = null;
 
   /**
    * @param array $routes List of routes.
@@ -26,6 +30,7 @@ class Router {
   }
 
   /**
+   * Creates new instance.
    * @param array $request
    */
   function createInstance($request) {

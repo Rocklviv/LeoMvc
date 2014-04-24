@@ -23,17 +23,7 @@ class forum extends Controller {
    * Index page.
    */
   function index() {
-    $arr = array('key' => 'value');
-
-    $this->db->index();
-
-    $enc = $this->crypto->Encrypt('testpassword');
-    $dec = $this->crypto->Decrypt($enc);
-
-    echo "Encrypted: " . $enc . '<br/>';
-    echo "Decrypted: " . $dec . '<br/>';
-
-    echo $this->render('forum/index.twig', $arr);
+    
   }
 
 } 
