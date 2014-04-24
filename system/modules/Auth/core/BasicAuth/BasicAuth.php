@@ -1,25 +1,23 @@
 <?php
-	namespace system\modules\Auth\core\BasicAuth;
-	use \system\modules\Auth\core\BasicAuth\BasicAuthModel;
+namespace system\modules\Auth\core\BasicAuth;
+use \system\modules\Auth\core\BasicAuth\BasicAuthModel;
 
-	class BasicAuth {
-		
-		private $basicAuthModel = null;
+class BasicAuth {
 
-		function __construct() {
-			$this->basicAuthModel = new BasicAuthModel();
-		}
+  private $basicAuthModel = null;
 
-		public function signIn() {}
+  function __construct() {
+    $this->basicAuthModel = new BasicAuthModel();
+  }
 
-		public function signUp() {}
+  public function signIn() {}
 
-		public function lostPassword() {}
+  public function signUp() {}
 
-		private function _checkUsers() {}
+  public function lostPassword() {}
 
-		private function _checkEmail() {}
+  private function _checkUsers() {}
 
+  private function _checkEmail() {}
 
-
-	}
+}

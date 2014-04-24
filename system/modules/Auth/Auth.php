@@ -16,8 +16,8 @@ class Auth {
 
   
   public static function __construct() {
-    $this->cfg = Application::getConfigs();
-    $this->authType = $this->cfg["auth-type"] ?: 'basic';
+    self::$cfg = Application::getConfigs();
+    self::$authType = self::$cfg["auth-type"] ?: 'basic';
   }
 
   /**
@@ -25,9 +25,9 @@ class Auth {
    */
   public static function getInstance() {
     if (self::$instance === null) {
-      if ($this->authType == 'basic') {
+      if (self::$authType == 'basic') {
         self::$instance = new BasicAuth();
-      } elseif ($this->authType == 'OAuth') {
+      } elseif (self::$authType == 'OAuth') {
         self::$instance = new OAuth();
       }
     }

@@ -15,10 +15,6 @@ class Crypto implements CryptoInterface {
    */
   private $algorithm;
 
-  /**
-   * @param $key
-   * @param string $algorithm
-   */
   public function __construct() {
     $this->key = SECRET_KEY;
     $this->algorithm = ENCRYPTION_TYPE;

@@ -1,7 +1,7 @@
 <?php
 
-	namespace system\modules\Auth\core\OAuthv2;
+  namespace system\modules\Auth\core\OAuthv2;
 
-	class OAuth {
-		
-	}
+  class OAuth {
+
+  }

@@ -7,9 +7,6 @@ namespace system\library\security\encryption;
  */
 interface CryptoInterface {
 
-  /**
-   * @param $key
-   */
   public function __construct();
 
   /**
