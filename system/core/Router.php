@@ -1,6 +1,6 @@
 <?php
-
 namespace system\core;
+
 use \system\exceptions\ErrorHandler;
 use \system\exceptions\HttpException;
 

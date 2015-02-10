@@ -9,6 +9,6 @@
 namespace system\exceptions;
 
 
-class DatabaseException extends \Exception {
+class DatabaseException extends \PDOException {
 
 }
