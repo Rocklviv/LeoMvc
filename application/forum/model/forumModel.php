@@ -21,4 +21,8 @@ class forumModel extends ActiveRecords {
     $result = $this->select('test');
     var_dump($result->fetchAll());
   }
+
+  function setData($data) {
+    $result = $this->insert('test', $data);
+  }
 }

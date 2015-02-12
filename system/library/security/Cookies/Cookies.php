@@ -1,10 +1,10 @@
 <?php
-namespace system\library\security\Cookies;
-use \system\library\security\Cookies\CookiesInterface;
+namespace system\library\Security\Cookies;
+use \system\library\Security\Cookies\CookiesInterface;
 
 /**
  * Class Cookies
- * @package system\library\security\Cookies
+ * @package system\library\Security\Cookies
  */
 class Cookies implements CookiesInterface {
 

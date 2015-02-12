@@ -1,10 +1,10 @@
 <?php
 
-namespace system\library\security\Session;
+namespace system\library\Security\Session;
 
 /**
  * Interface SessionInterface
- * @package system\library\security\Session
+ * @package system\library\Security\Session
  */
 interface SessionInterface {
 

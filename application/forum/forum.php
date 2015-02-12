@@ -24,6 +24,11 @@ class forum extends Controller {
    */
   function index() {
     $this->db->index();
+
+    if ($_SERVER['REQUEST_METHOD'] && $_REQUEST['test_text']) {
+      $this->db->setData($_REQUEST['test_text']);
+    }
+    echo $this->render('forum/index.twig');
   }
 
 } 

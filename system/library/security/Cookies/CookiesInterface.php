@@ -1,10 +1,10 @@
 <?php
 
-namespace system\library\security\Cookies;
+namespace system\library\Security\Cookies;
 
 /**
  * Interface CookiesInterface
- * @package system\library\security\Cookies
+ * @package system\library\Security\Cookies
  */
 interface CookiesInterface {
  /**

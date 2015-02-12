@@ -25,7 +25,7 @@ define('CACHE', 'cache');
 // Encryption type
 define('ENCRYPTION_TYPE', MCRYPT_RIJNDAEL_256);
 
-// Secret key that used for encryption/decryption. The length of key 32 characters.
+// Secret key that used for Encryption/decryption. The length of key 32 characters.
 define('SECRET_KEY', '3yhj3b6psja370x56g2i9o359pFg4q1b');
 
 // Including a bootstrap application class.

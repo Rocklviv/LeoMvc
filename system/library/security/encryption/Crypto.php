@@ -1,5 +1,5 @@
 <?php
-namespace system\library\security\encryption;
+namespace system\library\Security\Encryption;
 
 class Crypto implements CryptoInterface {
 

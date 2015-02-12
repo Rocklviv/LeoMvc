@@ -1,5 +1,5 @@
 <?php
-namespace system\library\security\encryption;
+namespace system\library\Security\Encryption;
 
 /**
  * Interface CryptoInterface
@@ -22,5 +22,4 @@ interface CryptoInterface {
    * @return mixed
    */
   public function Decrypt($key);
-
 } 
