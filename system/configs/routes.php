@@ -9,11 +9,11 @@ $routes = array(
     'controller' => 'forum',
     'method' => 'index'
   ),
-  'forum/' => array(
+  'forum' => array(
     'controller' => 'forum',
     'method' => 'index'
   ),
-  'forum/register/' => array(
+  'forum/register' => array(
     'controller' => 'accounts',
     'method' => 'register',
     'param' => '\w+'

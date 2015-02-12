@@ -99,7 +99,7 @@ class Router {
 
     $this->uri = self::_removeEmptyUriPart($rUri);
     $r = self::_checkRoutes();
-
+    var_dump($r);
     try {
       if ($r) {
         $this->createInstance($r);
@@ -120,12 +120,14 @@ class Router {
    */
   private function _removeEmptyUriPart($uri) {
     $modifiedUri = array();
-    if (sizeof($uri) >= 3) {
+    if (sizeof($uri) > 3) {
       $this->param = $uri[sizeof($uri) - 1];
       unset($uri[sizeof($uri) - 1]);
     }
     foreach ($uri as $key => $value) {
-      if ($value !== '') $modifiedUri[] = $value;
+      if ($value !== '') {
+        $modifiedUri[] = $value;
+      }
     }
     return $modifiedUri;
   }
@@ -158,6 +160,7 @@ class Router {
     } else {
       $route = '/';
     }
+    $route = $this->_removeTrailingSlash($route);
     foreach($this->listRoutes as $key => $val) {
       $r[] = $key;
     }
@@ -166,6 +169,19 @@ class Router {
       return $this->listRoutes[$route];
     } else {
       return false;
+    }
+  }
+
+  /**
+   * Removes trailing slash from requested url.
+   * @param $uri
+   * @return string
+   */
+  private function _removeTrailingSlash($uri) {
+    if ($uri{strlen($uri) - 1}) {
+      return substr($uri, 0, strlen($uri) - 1);
+    } else {
+      return $uri;
     }
   }
 
