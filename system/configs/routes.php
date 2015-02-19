@@ -15,7 +15,7 @@ $routes = array(
   ),
   'forum/register' => array(
     'controller' => 'accounts',
-    'method' => 'register',
+    'method' => 'registeration',
     'param' => '\w+'
   )
 );

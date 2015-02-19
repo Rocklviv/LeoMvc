@@ -21,7 +21,7 @@ class Auth {
    * Reference to required instance.
    * @var null
    */
-  private static $instance = null;
+  public static $instance = null;
   /**
    * Stores authentication type.
    * @var null|string
@@ -32,7 +32,7 @@ class Auth {
   /**
    *
    */
-  public static function __construct() {
+  function __construct() {
     self::$cfg = Application::getConfigs();
     self::$authType = self::$cfg["auth-type"] ?: 'basic';
   }
@@ -48,6 +48,10 @@ class Auth {
         self::$instance = new OAuth();
       }
     }
+  }
+
+  public function instance() {
+    return self::$instance;
   }
 
 }

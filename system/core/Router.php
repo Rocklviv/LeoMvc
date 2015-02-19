@@ -99,7 +99,7 @@ class Router {
 
     $this->uri = self::_removeEmptyUriPart($rUri);
     $r = self::_checkRoutes();
-    var_dump($r);
+
     try {
       if ($r) {
         $this->createInstance($r);
@@ -178,10 +178,14 @@ class Router {
    * @return string
    */
   private function _removeTrailingSlash($uri) {
-    if ($uri{strlen($uri) - 1}) {
-      return substr($uri, 0, strlen($uri) - 1);
-    } else {
+    if (strlen($uri) == 1) {
       return $uri;
+    }else {
+      if ($uri{strlen($uri) - 1}) {
+        return substr($uri, 0, strlen($uri) - 1);
+      } else {
+        return $uri;
+      }
     }
   }
 
