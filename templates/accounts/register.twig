@@ -1,38 +1,40 @@
 {% extends 'base.layout.twig' %}
 {% block content %}
-<form action="/forum/register" method="POST" class="form-horizontal">
-  <fieldset>
-    <legend>Sign Up</legend>
-    <div class="form-group">
-      <label for="username" class="col-lg-2 control-label">Username:</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+<div class="form">
+  <form action="/forum/register" method="POST" class="form-horizontal">
+    <fieldset>
+      <legend>Sign Up</legend>
+      <div class="form-group">
+        <label for="username" class="col-lg-2 control-label">Username:</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="email" class="col-lg-2 control-label">Email:</label>
-      <div class="col-lg-10">
-        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
+      <div class="form-group">
+        <label for="email" class="col-lg-2 control-label">Email:</label>
+        <div class="col-lg-10">
+          <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="password" class="col-lg-2 control-label">Password:</label>
-      <div class="col-lg-10">
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+      <div class="form-group">
+        <label for="password" class="col-lg-2 control-label">Password:</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="confirm-password" class="col-lg-2 control-label">Confirm Password:</label>
-      <div class="col-lg-10">
-        <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+      <div class="form-group">
+        <label for="confirm-password" class="col-lg-2 control-label">Confirm Password:</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </div>
-    </div>
-  </fieldset>
-</form>
+    </fieldset>
+  </form>
+</div>
 {% endblock %}

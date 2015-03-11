@@ -18,8 +18,19 @@ class accounts extends Controller {
   function registeration() {
     $title = array('title'=>'Sign UP at LeoForum');
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $title = array('title' => 'Sign UP Successful');
-      echo $this->renderTpl('accounts/signupSuccess.twig', $title);
+      if (array_key_exists('username', $_REQUEST) &&
+          array_key_exists('password', $_REQUEST) &&
+          array_key_exists('inputEmail', $_REQUEST))
+      {
+        if ($this->_authType->signUp()) {
+          $title = array('title' => 'Sign UP Successful');
+          echo $this->renderTpl('accounts/signupSuccess.twig', $title);
+        } else {
+          $title = array('title' => '');
+          echo $this->renderTpl('accounts/signupFailure.twig', $title);
+        }
+      }
+
     } else {
       $this->_authType->generateForm('register', $title);
     }
