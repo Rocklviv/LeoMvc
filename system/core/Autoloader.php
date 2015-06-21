@@ -5,6 +5,7 @@
   /**
    * Class Autoloader
    * @package system\core
+   * @author Denis Chekirda
    */
   class Autoloader {
     /**
@@ -67,16 +68,19 @@
     }
 
     /**
-     * @method _trimPaths
+     * Trims paths from namespace list.
+     * @param array $namespaces
+     * @return array
      */
     private function _trimPaths($namespaces = array()) {
-      $trimedNamespaced = array();
+      $trimNamespace = array();
       if ($namespaces) {
-        $trimedNamespaced = array_map(function($includePath) {
+        $trimNamespace = array_map(function($includePath) {
           $trimmed = rtrim(reset($includePath), DIRECTORY_SEPARATOR);
           return array(key($includePath) => $trimmed);
         }, $namespaces);
       }
-      return $trimedNamespaced;
+
+      return $trimNamespace;
     }
   }

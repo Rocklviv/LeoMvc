@@ -1,21 +1,39 @@
 <?php
-
 namespace system\core;
+
 use \system\exceptions\ErrorHandler;
 use \system\exceptions\HttpException;
 
 /**
  * Class Router
  * @package system\core
+ * @author Denis Chekirda
  */
 class Router {
 
-  private $uri;
+  /**
+   * Stores requested URI.
+   * @var null
+   */
+  private $uri = null;
+  /**
+   * Stores list of available routes.
+   * @var array
+   */
   private $listRoutes = array();
-  private $additionalParams = '';
-  private $param;
+  /**
+   * Stores additional params.
+   * @var null
+   */
+  private $additionalParams = null;
+  /**
+   * Stores additional param.
+   * @var null
+   */
+  private $param = null;
 
   /**
+   * Starts routing.
    * @param array $routes List of routes.
    */
   function start($routes = array()) {
@@ -26,6 +44,7 @@ class Router {
   }
 
   /**
+   * Creates new instance as requested.
    * @param array $request
    */
   function createInstance($request) {
@@ -34,8 +53,8 @@ class Router {
     $method = $request['method'];
 
     if ($controller_path) {
-      self::_checkControllerExists($controller_path);
-      $ctr = new $controller;
+      $class = '\\application\\' . $controller . '\\' . $controller;
+      $ctr = new $class;
       if (method_exists($ctr, $method)) {
         if ($this->param){
           $ctr->$method($this->param);
@@ -49,6 +68,7 @@ class Router {
   /**
    * Checks controller on exist.
    * @param $controller_path
+   * @deprecated Will be reimplemented.
    * @return bool
    */
   private function _checkControllerExists($controller_path) {
@@ -65,7 +85,8 @@ class Router {
   }
 
   /**
-   *
+   * Prepares initialize of instance as requested.
+   * @throws HttpException
    */
   private function _processRequest() {
     $additionalParams = explode('?', $_SERVER['REQUEST_URI']);
@@ -94,17 +115,19 @@ class Router {
   /**
    * Removes empty values from URI array.
    * @method _removeEmptyUriPart
-   * @param array $uri
-   * @return array $modifiedUri
+   * @param array $uri Requested URI.
+   * @return array $modifiedUri Returns clean URI.
    */
   private function _removeEmptyUriPart($uri) {
     $modifiedUri = array();
-    if (sizeof($uri) >= 3) {
-      $this->param = $uri[3];
-      unset($uri[3]);
+    if (sizeof($uri) > 3) {
+      $this->param = $uri[sizeof($uri) - 1];
+      unset($uri[sizeof($uri) - 1]);
     }
     foreach ($uri as $key => $value) {
-      if ($value !== '') $modifiedUri[] = $value;
+      if ($value !== '') {
+        $modifiedUri[] = $value;
+      }
     }
     return $modifiedUri;
   }
@@ -137,6 +160,7 @@ class Router {
     } else {
       $route = '/';
     }
+    $route = $this->_removeTrailingSlash($route);
     foreach($this->listRoutes as $key => $val) {
       $r[] = $key;
     }
@@ -145,6 +169,23 @@ class Router {
       return $this->listRoutes[$route];
     } else {
       return false;
+    }
+  }
+
+  /**
+   * Removes trailing slash from requested url.
+   * @param $uri
+   * @return string
+   */
+  private function _removeTrailingSlash($uri) {
+    if (strlen($uri) == 1) {
+      return $uri;
+    }else {
+      if ($uri{strlen($uri) - 1}) {
+        return substr($uri, 0, strlen($uri) - 1);
+      } else {
+        return $uri;
+      }
     }
   }
 

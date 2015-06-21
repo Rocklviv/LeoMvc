@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <title>{{ title }}</title>
+    <script src="/resources/scripts/jquery.min.js"></script>
+    <script src="/resources/scripts/bootstrap.min.js"></script>
+    <script src="/resources/scripts/main.js"></script>
+
+    <link rel="stylesheet" href="/resources/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/resources/styles/main.css">
+  </head>
+  <body>
+    {% include "layouts/header.twig" %}
+    <div class="container">
+      <div class="row">
+        {% autoescape false %}
+          {% block messages %} {% endblock %}
+          {% block content %} {% endblock %}
+        {% endautoescape %}
+      </div>
+    </div>
+  <script>
+    new Base();
+  </script>
+  </body>
+</html>
