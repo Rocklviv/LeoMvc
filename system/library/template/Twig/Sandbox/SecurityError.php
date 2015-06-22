@@ -10,7 +10,7 @@
  */
 
 /**
- * Exception thrown when a security error occurs at runtime.
+ * Exception thrown when a Security error occurs at runtime.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

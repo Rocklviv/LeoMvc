@@ -10,7 +10,7 @@
  */
 
 /**
- * Represents a security policy which need to be enforced when sandbox mode is enabled.
+ * Represents a Security policy which need to be enforced when sandbox mode is enabled.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
