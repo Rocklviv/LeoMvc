@@ -40,4 +40,16 @@ class accounts extends Controller {
     $this->_authType->generateForm('login');
   }
 
+  function signin() {
+    $user = 'Admin';
+    $pass = 'Rocklviv85';
+    if (isset($_REQUEST) && array_key_exists('username', $_REQUEST)) $username = $_REQUEST['username'];
+    if (isset($_REQUEST) && array_key_exists('password', $_REQUEST)) $username = $_REQUEST['password'];
+
+    if ($username == $user && $password == $pass) {
+      $this->handleSession('set', 'isWTadmin', rand());
+      @header('Location: /watermark/index', 302);
+    }
+  }
+
 }

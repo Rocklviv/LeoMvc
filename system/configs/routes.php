@@ -6,16 +6,16 @@
  */
 $routes = array(
   '/' => array(
-    'controller' => 'forum',
+    'controller' => 'watermark',
     'method' => 'index'
   ),
-  'forum' => array(
-    'controller' => 'forum',
+  'watermark' => array(
+    'controller' => 'watermark',
     'method' => 'index'
   ),
-  'forum/register' => array(
+  'accounts/signin' => array(
     'controller' => 'accounts',
-    'method' => 'registeration',
+    'method' => 'signin',
     'param' => '\w+'
   )
 );
