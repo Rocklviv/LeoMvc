@@ -1,6 +1,6 @@
 LeoMvc
 ======
-
+[![Code Climate](https://codeclimate.com/github/Rocklviv/LeoMvc/badges/gpa.svg)](https://codeclimate.com/github/Rocklviv/LeoMvc)
 ### Simple MVC framework on PHP ###
 
 1. System requirements:
