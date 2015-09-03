@@ -42,7 +42,7 @@ class accounts extends Controller {
 
   function signin() {
     $user = 'Admin';
-    $pass = 'Rocklviv85';
+    $pass = 'Admin';
     if (isset($_REQUEST) && array_key_exists('username', $_REQUEST)) $username = $_REQUEST['username'];
     if (isset($_REQUEST) && array_key_exists('password', $_REQUEST)) $username = $_REQUEST['password'];
 
